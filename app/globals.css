@@ -1,0 +1,24 @@
+:root {
+    --color-text: #1A1A1A;
+    --color-author-posts: #6941C6;
+    --post-description: #667085;
+    --body-background: #FFFFFF;
+    --background-color-link: #F9F5FF;
+}
+
+[theme="dark"] {
+    :root {
+        --color-text: #FFFFFF;
+        --post-description: #C0C5D0;
+        --body-background: #090D1F;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter;
+    background-color: var(--body-background);
+}
