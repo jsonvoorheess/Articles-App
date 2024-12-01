@@ -1,0 +1,50 @@
+.vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--post-description);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gorizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+}
+
+.small {
+    object-fit: scale-down;
+    overflow: hidden;
+
+}
+
+.big {
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.small:hover {
+    opacity: 80%;
+}
+
+.big:hover {
+    opacity: 80%;
+}
+
+
+
+

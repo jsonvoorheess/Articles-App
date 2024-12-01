@@ -6,19 +6,24 @@
     --background-color-link: #F9F5FF;
 }
 
-[theme="dark"] {
-    :root {
+[data-theme="dark"] {
         --color-text: #FFFFFF;
         --post-description: #C0C5D0;
         --body-background: #090D1F;
-    }
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: Inter;
     background-color: var(--body-background);
+    height: 100%;
+}
+
+.content {
+    min-height: calc(100vh - 84px - 60px - 100px);
 }

@@ -23,6 +23,15 @@ const nextConfig: NextConfig = {
         fileLoaderRule.exclude = /\.svg$/i
 
         return config
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "media2.dev.to",
+                port: "",
+            }
+            ]
     }
 };
 
