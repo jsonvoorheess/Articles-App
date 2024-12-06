@@ -6,9 +6,11 @@ import {Article} from "@/entities/Article/Article";
 export default async function Home() {
     const data = await fetch("https://dev.to/api/articles/latest", { next: { revalidate: 100 } })
     const latestPosts:Post[] = await data.json()
+    const postsData = await fetch("https://dev.to/api/articles")
+    const posts: Post[] = await postsData.json()
   return (
    <div className={styles.latest} >
-       <H1>Недавние посты</H1>
+       <H1 className={styles.mainpageH} >Недавние посты</H1>
        <div className={styles.topLatest} >
        <div className={styles.cont} >
            <Article
@@ -55,8 +57,12 @@ export default async function Home() {
 
         </div>
        <H1>Все посты</H1>
-        <div>
-
+        <div className={styles.posts} >
+            {posts.map((post:Post) => {
+                return (
+                    <Article key={post.id} vert={true} link={`/article/${post.id}`} image={post.social_image} name={post.user.name} date={post.created_at} title={post.title} desc={post.description} imageSize={"small"} />
+                )
+            })}
         </div>
    </div>
   );

@@ -4,6 +4,10 @@
     gap: 32px;
 }
 
+.mainpageH {
+    margin-bottom: 10px;
+}
+
 .group {
     display: flex;
     flex-direction: column;
@@ -20,4 +24,16 @@
 .latest {
     margin-top: 20px;
     margin-bottom: 100px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+    .cont {
+        flex-direction: column;
+        justify-content: center;
+    }
 }

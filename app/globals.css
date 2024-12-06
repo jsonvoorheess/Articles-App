@@ -2,7 +2,8 @@
     --color-text: #1A1A1A;
     --color-author-posts: #6941C6;
     --post-description: #667085;
-    --body-background: #FFFFFF;
+    /*--body-background: #FFFFFF;*/
+    --body-background: rgb(245, 245, 245);
     --background-color-link: #F9F5FF;
 }
 
