@@ -2,6 +2,7 @@ import {Post} from "@/types";
 import {H1} from "@/shared/H1/H1";
 import styles from "./page.module.css"
 import {Article} from "@/entities/Article/Article";
+import {ButonListOpen} from "@/shared/ButtonListOpen/ButonListOpen";
 
 export default async function Home() {
     const data = await fetch("https://dev.to/api/articles/latest", { next: { revalidate: 100 } })
@@ -57,12 +58,25 @@ export default async function Home() {
 
         </div>
        <H1>Все посты</H1>
-        <div className={styles.posts} >
-            {posts.map((post:Post) => {
-                return (
-                    <Article key={post.id} vert={true} link={`/article/${post.id}`} image={post.social_image} name={post.user.name} date={post.created_at} title={post.title} desc={post.description} imageSize={"small"} />
-                )
-            })}
+        <div>
+            <div className={styles.posts} >
+                {posts.slice(0, 16).map((post:Post) => {
+                    return (
+                        <Article
+                            className={styles.post}
+                            key={post.id}
+                            vert={true}
+                            link={`/article/${post.id}`}
+                            image={post.social_image}
+                            name={post.user.name}
+                            date={post.created_at}
+                            title={post.title}
+                            desc={post.description}
+                            imageSize={"small"} />
+                    )
+                })}
+            </div>
+                <ButonListOpen infoArticles={posts.slice(17)} />
         </div>
    </div>
   );

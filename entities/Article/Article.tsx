@@ -23,7 +23,7 @@ interface BigArticleProps {
 
 export const Article:FC<BigArticleProps> = ({ className, link, vert, image, name, date, title, desc, imageSize }) => {
     return (
-        <Link href={link} role="link" className={styles.link} >
+        <Link href={link} role="link" className={classNames(styles.link, className)} >
             <article className={classNames(styles.article, className, {
                 [styles.vertical]: vert,
                 [styles.gorizontal]: !vert
