@@ -1,0 +1,54 @@
+.beginners {
+    color: #008335;
+}
+.programming {
+    color: #890606;
+}
+.javascript {
+    color: #f7df1e;
+}
+.webdev {
+    color: #562765;
+}
+.tutorial {
+    color: #FEFFA5;
+}
+.react {
+    color: #222222;
+}
+.python {
+    color: #1E38BB;
+}
+.archlinux {
+    color: #0099bd;
+}
+.productivity {
+    color: #2A0798;
+}
+.devops {
+    color: #06B500;
+}
+
+.a11y {
+    color: #7f4b4b;
+}
+.android {
+    color: #6c84ea;
+}
+.testing {
+    color: magenta;
+}
+.mobile {
+    color: salmon;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 20px;
+}
+
+.tagtext {
+    color: var(--color-text);
+}

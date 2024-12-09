@@ -1,0 +1,39 @@
+.CommentForm {
+    padding: 20px;
+    border: 1px solid var(--post-description);
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.CommentForm img {
+    border-radius: 50%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form textarea {
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+}
+
+.buttonSignIn {
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: var(--color-author-posts);
+    color: var(--color-text);
+    padding: 10px;
+    border: 1px solid var(--post-description);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.1s linear;
+}
+
+.buttonSignIn:hover {
+    background-color: #7854cb;
+}

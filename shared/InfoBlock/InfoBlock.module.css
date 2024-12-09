@@ -1,0 +1,21 @@
+.infoblock {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--post-description);
+    margin-top: 10px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.infoblock p {
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+
+.infoblock a {
+    text-decoration: none;
+}

@@ -1,0 +1,11 @@
+.reaction {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.button {
+    background: none;
+    border: none;
+}

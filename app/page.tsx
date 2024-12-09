@@ -7,7 +7,7 @@ import {ButonListOpen} from "@/shared/ButtonListOpen/ButonListOpen";
 export default async function Home() {
     const data = await fetch("https://dev.to/api/articles/latest", { next: { revalidate: 100 } })
     const latestPosts:Post[] = await data.json()
-    const postsData = await fetch("https://dev.to/api/articles")
+    const postsData = await fetch("https://dev.to/api/articles", { cache: "force-cache" })
     const posts: Post[] = await postsData.json()
   return (
    <div className={styles.latest} >
@@ -17,7 +17,7 @@ export default async function Home() {
            <Article
                key={latestPosts[0].id}
                vert={true}
-               link={`/article/${latestPosts[0].id}`}
+               link={`/post/${latestPosts[0].id}`}
                image={latestPosts[0].social_image}
                name={latestPosts[0].user.name}
                date={latestPosts[0].created_at}
@@ -31,7 +31,7 @@ export default async function Home() {
                        <Article
                            key={post.id}
                            vert={false}
-                           link={`/article/${post.id}`}
+                           link={`/post/${post.id}`}
                            image={post.social_image}
                            name={post.user.name}
                            date={post.created_at}
@@ -46,7 +46,7 @@ export default async function Home() {
                    <Article
                        key={latestPosts[3].id}
                        vert={false}
-                       link={`/article/${latestPosts[3].id}`}
+                       link={`/post/${latestPosts[3].id}`}
                        image={latestPosts[3].social_image}
                        name={latestPosts[3].user.name}
                        date={latestPosts[3].created_at}
@@ -66,7 +66,7 @@ export default async function Home() {
                             className={styles.post}
                             key={post.id}
                             vert={true}
-                            link={`/article/${post.id}`}
+                            link={`/post/${post.id}`}
                             image={post.social_image}
                             name={post.user.name}
                             date={post.created_at}

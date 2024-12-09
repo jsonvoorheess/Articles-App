@@ -1,0 +1,46 @@
+.userImage {
+    border-radius: 50%;
+}
+
+.comment {
+    display: flex;
+    gap: 10px;
+}
+
+.commentInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #c5bdbd;
+    border-radius: 10px;
+
+}
+
+.commentUser {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+
+
+.content img {
+    max-width: 730px;
+}
+
+.content pre {
+    white-space: pre-wrap;
+}
+
+.userLink {
+    padding: 10px;
+    text-decoration: none;
+    color: var(--color-text);
+    border-radius: 10px;
+    transition: background-color 0.5s linear;
+}
+
+.userLink:hover {
+    background-color: var(--post-description);
+}

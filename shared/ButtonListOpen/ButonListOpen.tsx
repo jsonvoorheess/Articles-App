@@ -19,7 +19,7 @@ export const ButonListOpen:FC<ButonListOpenProps> = ({infoArticles}) => {
             <div className={styles.posts} >
                 {infoArticles.map((post:Post) => {
                     return (
-                        <Article className={styles.post} key={post.id} vert={true} link={`/article/${post.id}`} image={post.social_image} name={post.user.name} date={post.created_at} title={post.title} desc={post.description} imageSize={"small"} />
+                        <Article className={styles.post} key={post.id} vert={true} link={`/post/${post.id}`} image={post.social_image} name={post.user.name} date={post.created_at} title={post.title} desc={post.description} imageSize={"small"} />
                     )
                 })}
             </div>

@@ -1,0 +1,26 @@
+.usercart {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.image {
+    border-radius: 50%;
+    border: 1px solid #e1dddd;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.span{
+    color: #667085;
+}

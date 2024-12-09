@@ -1,0 +1,38 @@
+.reactionsBar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reaction {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.like {
+    stroke: var(--color-text);
+    cursor: pointer;
+    transition: stroke 0.5s linear;
+}
+
+.comm {
+    fill: var(--color-text);
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.like:hover {
+    fill: red;
+    stroke: red;
+}
+
+.comm:hover {
+    fill: #7f4b4b;
+    stroke: #7f4b4b;
+}
+
+.isLike path {
+    fill: red;
+}
