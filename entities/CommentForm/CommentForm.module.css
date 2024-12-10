@@ -1,9 +1,23 @@
+.CommentFormAuth {
+    padding: 20px;
+    border: 1px solid var(--post-description);
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
 .CommentForm {
     padding: 20px;
     border: 1px solid var(--post-description);
     border-radius: 10px;
     display: flex;
     gap: 10px;
+
+}
+
+.circular {
+    margin: 0 auto;
 }
 
 .CommentForm img {
@@ -16,10 +30,28 @@
     gap: 20px;
 }
 
+.form button {
+    padding: 10px;
+    background-color: var(--color-author-posts);
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
 .form textarea {
     border-radius: 10px;
     outline: none;
+    color: var(--color-text);
     padding: 10px;
+    font-size: 20px;
+    background-color: var(--body-background);
+}
+
+.form .error {
+    border: 1px solid red;
+    transition: border 0.2s linear;
 }
 
 .buttonSignIn {

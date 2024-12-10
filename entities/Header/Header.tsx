@@ -9,12 +9,24 @@ import Githab from "@/public/github.svg"
 import Image from "next/image";
 import ThemeChanger from "@/entities/ThemeSwitcher/ThemeSwitcher";
 import {useState} from "react";
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel} from "@mui/material";
+import {
+    Button,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormControl,
+    InputLabel
+} from "@mui/material";
+import {usePathname} from "next/navigation";
 
 
 export const Header = () => {
-    const { data:session } = useSession()
+    const { data:session, status } = useSession()
     const [open, setOpen] = useState(false);
+    const path = usePathname()
+    console.log(path)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -22,7 +34,7 @@ export const Header = () => {
 
     const handleSend = async (event: React.SyntheticEvent<unknown>, reason?: string) => {
         await signOut({
-            callbackUrl: "/",
+            callbackUrl: path,
             redirect: true
         })
         if (reason !== 'backdropClick') {
@@ -44,30 +56,32 @@ export const Header = () => {
                     <WhiteLogo/>
                     <nav className={classNames(styles.nav)}>
                         <NavLink path="/">Posts</NavLink>
-                        {session
+                        {session && session.user && session.user.image
                             ?
                             <>
                                 <button onClick={handleClickOpen} className={styles.buttonUserAvatar}>
                                     <Image className={styles.useravatar} width={40} height={40}
-                                           src={session.user?.image || ""} alt={"Фото вашего профиля"}/>
+                                           src={session.user.image as string} alt={"Фото вашего профиля"}/>
                                 </button>
                                 <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
-                                        <DialogTitle>Вы уверены, что хотите выйти из аккаунта?</DialogTitle>
-                                        <DialogActions>
-                                            <Button onClick={handleClose}>Отменить</Button>
-                                            <Button onClick={handleSend}>Да</Button>
-                                        </DialogActions>
+                                    <DialogTitle>Вы уверены, что хотите выйти из аккаунта?</DialogTitle>
+                                    <DialogActions>
+                                        <Button onClick={handleClose}>Отменить</Button>
+                                        <Button onClick={handleSend}>Да</Button>
+                                    </DialogActions>
                                 </Dialog>
                             </>
 
-                            :
-                            <button onClick={() => signIn("github", {
-                                callbackUrl: "/",
-                                redirect: true
-                            })} className={styles.authbutton}>
-                                <span>Войти</span>
-                                <Githab/>
-                            </button>}
+                            : status === "unauthenticated" ?
+                                <button onClick={() => signIn("github", {
+                                    callbackUrl: path,
+                                    redirect: true
+                                })} className={styles.authbutton}>
+                                    <span>Войти</span>
+                                    <Githab/>
+                                </button> :
+                                    <CircularProgress size="30px"  />
+                                }
                         <ThemeChanger/>
                     </nav>
                 </div>

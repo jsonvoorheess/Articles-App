@@ -55,7 +55,7 @@ export default async function Page({params,}: { params: Promise<{ id: string }> 
                             <CommentForm />
                             {comments.map((comment) => {
                                 return (
-                                    <Comment src={comment.user.profile_image_90} username={comment.user.username} date={comment.created_at} content={comment.body_html} />
+                                    <Comment key={comment.id_code} src={comment.user.profile_image_90} username={comment.user.username} date={comment.created_at} content={comment.body_html} />
                                 )
                             })}
 
