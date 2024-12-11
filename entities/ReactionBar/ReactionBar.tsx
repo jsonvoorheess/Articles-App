@@ -28,7 +28,7 @@ export const ReactionBar:FC<ReactionBarProps> = ({ commentCount, likeCount }) =>
                         [styles.isLike]: isLike
                     })} />
                 <span>
-                {likeCount}
+                {isLike ? likeCount + 1 : likeCount}
             </span>
             </div>
             <div className={styles.reaction}>

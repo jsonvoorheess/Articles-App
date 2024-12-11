@@ -14,7 +14,10 @@
     padding: 20px;
     border: 1px solid #c5bdbd;
     border-radius: 10px;
+}
 
+.date {
+    font-size: 17px;
 }
 
 .commentUser {
@@ -34,13 +37,5 @@
 }
 
 .userLink {
-    padding: 10px;
-    text-decoration: none;
     color: var(--color-text);
-    border-radius: 10px;
-    transition: background-color 0.5s linear;
-}
-
-.userLink:hover {
-    background-color: var(--post-description);
 }

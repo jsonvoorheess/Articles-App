@@ -11,7 +11,7 @@ interface InfoSpanProps {
 export const InfoSpan:FC<InfoSpanProps> = ({ name, className, date }) => {
     return (
         <span className={classNames(styles.span, className)} >
-            {`${name}•${date}`}
+            {`${name} • ${date}`}
         </span>
     )
 }

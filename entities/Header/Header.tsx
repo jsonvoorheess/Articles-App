@@ -26,7 +26,6 @@ export const Header = () => {
     const { data:session, status } = useSession()
     const [open, setOpen] = useState(false);
     const path = usePathname()
-    console.log(path)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -55,7 +54,7 @@ export const Header = () => {
                 <div className={classNames(styles.header)} >
                     <WhiteLogo/>
                     <nav className={classNames(styles.nav)}>
-                        <NavLink path="/">Posts</NavLink>
+                        <NavLink path="/">Главная</NavLink>
                         {session && session.user && session.user.image
                             ?
                             <>

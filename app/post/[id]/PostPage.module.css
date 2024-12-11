@@ -46,6 +46,10 @@
     target: new;
 }
 
+.postText video {
+    max-width: 730px;
+}
+
 .postText a:hover {
     text-decoration: none;
     color: #514167;
@@ -105,6 +109,7 @@
 .image {
     border-radius: 10px;
     object-fit: cover;
+    padding-right: 3px;
 }
 
 

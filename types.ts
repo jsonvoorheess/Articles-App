@@ -85,3 +85,12 @@ export interface User2 {
 }
 
 export const Tag = ["beginners", "programming", "javascript", "webdev", "tutorial", "react", "python", "archlinux", "productivity", "devops", "a11y", "android", "testing", "mobile"]
+
+export interface MyComment {
+    id: number,
+    author: string | null | undefined,
+    text: string,
+    avatar: string | null | undefined,
+    commId: string,
+    date: string
+}

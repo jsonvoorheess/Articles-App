@@ -23,7 +23,7 @@ export default function UnstyledSelectIntroduction() {
     return (
         <Select defaultValue={
             theme === "light" ?
-            "Сменить тему"
+            "Светлая"
             :
             "Темная"
             }>

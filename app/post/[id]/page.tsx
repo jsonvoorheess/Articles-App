@@ -1,4 +1,4 @@
-import {comment, Post, Tag, User1} from "@/types";
+import {comment, MyComment, Post, Tag, User1} from "@/types";
 import {ReactionBar} from "@/entities/ReactionBar/ReactionBar";
 import Image from "next/image";
 import styles from "./PostPage.module.css"
@@ -18,6 +18,7 @@ export async function generateStaticParams() {
     const MainPosts: Post[] = await postsData.json()
     const posts:Post[] = latestPosts.concat(MainPosts)
 
+
     return posts.map((post:Post) => ({
         id: post.id.toString(),
     }))
@@ -31,7 +32,8 @@ export default async function Page({params,}: { params: Promise<{ id: string }> 
     const tagsArray:string[] = tags.split(", ").filter((tag) => Tag.includes(tag))
     const comments:comment[] = await fetch(`https://dev.to/api/comments?a_id=${post.id}`).then(comm => comm.json())
     const user:User1 = await fetch(`https://dev.to/api/users/${post.user.user_id}`, { cache: "force-cache" }).then(user => user.json())
-    console.log(comments)
+    const myComments:MyComment[] = await fetch("http://localhost:8000/comments").then(res => res.json())
+    const filteredComm = myComments.filter((comm) => comm.id === post.id)
     return (
         <section className={styles.section} key={post.id} >
             <div className={styles.left} >
@@ -52,7 +54,12 @@ export default async function Page({params,}: { params: Promise<{ id: string }> 
                         </div>
                         <hr/>
                         <div className={styles.comments} id={"comm"} >
-                            <CommentForm />
+                            <CommentForm PostId={post.id} />
+                            {filteredComm.map((comm) => {
+                                return (
+                                    <Comment key={comm.commId} src={comm.avatar as string} username={comm.author as string} date={comm.date} content={comm.text} />
+                                )
+                            })}
                             {comments.map((comment) => {
                                 return (
                                     <Comment key={comment.id_code} src={comment.user.profile_image_90} username={comment.user.username} date={comment.created_at} content={comment.body_html} />

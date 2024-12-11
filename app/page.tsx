@@ -3,6 +3,7 @@ import {H1} from "@/shared/H1/H1";
 import styles from "./page.module.css"
 import {Article} from "@/entities/Article/Article";
 import {ButonListOpen} from "@/shared/ButtonListOpen/ButonListOpen";
+import {TranslateDate} from "@/utils";
 
 export default async function Home() {
     const data = await fetch("https://dev.to/api/articles/latest", { next: { revalidate: 100 } })
@@ -20,7 +21,7 @@ export default async function Home() {
                link={`/post/${latestPosts[0].id}`}
                image={latestPosts[0].social_image}
                name={latestPosts[0].user.name}
-               date={latestPosts[0].created_at}
+               date={TranslateDate(latestPosts[0].created_at)}
                title={latestPosts[0].title}
                desc={latestPosts[0].description}
                imageSize={"big"}
@@ -34,7 +35,7 @@ export default async function Home() {
                            link={`/post/${post.id}`}
                            image={post.social_image}
                            name={post.user.name}
-                           date={post.created_at}
+                           date={TranslateDate(post.created_at)}
                            title={post.title}
                            desc={post.description}
                            imageSize={"small"}
@@ -49,7 +50,7 @@ export default async function Home() {
                        link={`/post/${latestPosts[3].id}`}
                        image={latestPosts[3].social_image}
                        name={latestPosts[3].user.name}
-                       date={latestPosts[3].created_at}
+                       date={TranslateDate(latestPosts[3].created_at)}
                        title={latestPosts[3].title}
                        desc={latestPosts[3].description}
                        imageSize={"big"}
@@ -69,7 +70,7 @@ export default async function Home() {
                             link={`/post/${post.id}`}
                             image={post.social_image}
                             name={post.user.name}
-                            date={post.created_at}
+                            date={TranslateDate(post.created_at)}
                             title={post.title}
                             desc={post.description}
                             imageSize={"small"} />

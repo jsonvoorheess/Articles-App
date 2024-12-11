@@ -4,6 +4,7 @@ import {Button} from "@mui/material";
 import styles from "./ButtonListOpen.module.css"
 import {Post} from "@/types";
 import {Article} from "@/entities/Article/Article";
+import {TranslateDate} from "@/utils";
 
 interface ButonListOpenProps {
     infoArticles: Post[]
@@ -19,7 +20,7 @@ export const ButonListOpen:FC<ButonListOpenProps> = ({infoArticles}) => {
             <div className={styles.posts} >
                 {infoArticles.map((post:Post) => {
                     return (
-                        <Article className={styles.post} key={post.id} vert={true} link={`/post/${post.id}`} image={post.social_image} name={post.user.name} date={post.created_at} title={post.title} desc={post.description} imageSize={"small"} />
+                        <Article className={styles.post} key={post.id} vert={true} link={`/post/${post.id}`} image={post.social_image} name={post.user.name} date={TranslateDate(post.created_at)} title={post.title} desc={post.description} imageSize={"small"} />
                     )
                 })}
             </div>
