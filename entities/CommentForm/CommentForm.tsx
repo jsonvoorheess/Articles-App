@@ -1,5 +1,5 @@
 "use client"
-import React, {FormEvent, useEffect, useRef, useState} from 'react';
+import React, {FormEvent, useRef, useState} from 'react';
 import {signIn, useSession} from "next-auth/react";
 import styles from "./CommentForm.module.css"
 import {H1} from "@/shared/H1/H1";
@@ -9,7 +9,7 @@ import classNames from "classnames";
 import {Container} from "@/shared/Container/Container";
 import {Comment} from "@/shared/Comment/Comment";
 import {MyComment} from "@/types";
-import {TranslateDate} from "@/utils";
+// eslint-disable-next-line no-var, @typescript-eslint/no-require-imports
 var randomize = require('randomatic');
 
 export const CommentForm = ({ PostId }: { PostId: number }) => {

@@ -26,8 +26,6 @@
     align-items: center;
 }
 
-
-
 .content img {
     max-width: 730px;
 }
@@ -38,4 +36,15 @@
 
 .userLink {
     color: var(--color-text);
+}
+
+@media (max-width: 930px) {
+    .content img {
+        max-width: 400px;
+    }
+    .content {
+        max-width: 400px;
+        white-space: pre-wrap;
+    }
+
 }

@@ -17,31 +17,35 @@ export async function generateStaticParams() {
     const postsData = await fetch("https://dev.to/api/articles")
     const MainPosts: Post[] = await postsData.json()
     const posts:Post[] = latestPosts.concat(MainPosts)
-
-
     return posts.map((post:Post) => ({
         id: post.id.toString(),
+
     }))
 }
 
-
-export default async function Page({params,}: { params: Promise<{ id: string }> }) {
+export default async function Page({params,}: { params: Promise<{ id: string, userId:string }> }) {
     const id = (await params).id
+    
     const post:Post = await fetch(`https://dev.to/api/articles/${id}`, { cache:"force-cache" }).then(post => post.json())
     const tags:string = post.tag_list
     const tagsArray:string[] = tags.split(", ").filter((tag) => Tag.includes(tag))
     const comments:comment[] = await fetch(`https://dev.to/api/comments?a_id=${post.id}`).then(comm => comm.json())
-    const user:User1 = await fetch(`https://dev.to/api/users/${post.user.user_id}`, { cache: "force-cache" }).then(user => user.json())
+    const user:User1 = await fetch(`https://dev.to/api/users/${post.user.user_id}`, { cache: "force-cache"})
+    .then(user => user.json())
     const myComments:MyComment[] = await fetch("http://localhost:8000/comments").then(res => res.json())
-    const filteredComm = myComments.filter((comm) => comm.id === post.id)
+    const filteredComm = myComments.filter((comm) => comm.id === post.id)   
     return (
-        <section className={styles.section} key={post.id} >
+            <section className={styles.section} key={post.id} >
             <div className={styles.left} >
-                <ReactionBar commentCount={comments.length} likeCount={post.positive_reactions_count} />
+                <ReactionBar className={styles.reaction1} commentCount={comments.length} likeCount={post.positive_reactions_count} />
                 <main className={styles.post} >
                     <Image className={styles.image} width={876} height={368} src={post.social_image} alt="Фото поста" />
                     <div className={styles.info} >
-                        <UserCart src={post.user.profile_image} userName={post.user.username} date={post.readable_publish_date} />
+                        <div className={styles.reacions} >
+                            <UserCart src={post.user.profile_image} userName={post.user.username} date={post.readable_publish_date} />
+                            <ReactionBar className={styles.reaction2} commentCount={comments.length} likeCount={post.positive_reactions_count} />
+                        </div>
+                
                         <H1 className={styles.title} >{post.title}</H1>
                         <div className={styles.tags} >
                             {tagsArray.map((tag) => {
@@ -81,5 +85,8 @@ export default async function Page({params,}: { params: Promise<{ id: string }> 
                 </div>
             </aside>
         </section>
+
+
+        
     )
 }

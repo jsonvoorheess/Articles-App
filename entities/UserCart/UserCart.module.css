@@ -24,3 +24,8 @@
 .span{
     color: #667085;
 }
+
+.reactions {
+    display: flex;
+    align-items: center;
+}

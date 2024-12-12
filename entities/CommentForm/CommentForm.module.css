@@ -69,3 +69,13 @@
 .buttonSignIn:hover {
     background-color: #7854cb;
 }
+
+@media (max-width: 930px) {
+    .form textarea {
+        max-width: 400px;
+    }
+    .buttonSignIn {
+        max-width: 400px;
+    }
+
+}

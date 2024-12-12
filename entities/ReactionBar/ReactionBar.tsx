@@ -1,5 +1,5 @@
 "use client"
-import {FC, MouseEventHandler, useCallback, useState} from "react";
+import {FC, useCallback, useState} from "react";
 import styles from "./ReactionBar.module.css"
 import Like from "@/public/heart.svg"
 import Comment from "@/public/comment.svg"
@@ -8,11 +8,12 @@ import classNames from "classnames";
 
 interface ReactionBarProps {
     commentCount: number,
-    likeCount: number
+    likeCount: number,
+    className?: string
 }
 
 
-export const ReactionBar:FC<ReactionBarProps> = ({ commentCount, likeCount }) => {
+export const ReactionBar:FC<ReactionBarProps> = ({ commentCount, likeCount, className }) => {
     const [isLike, setIsLike] = useState(false)
 
 
@@ -22,14 +23,14 @@ export const ReactionBar:FC<ReactionBarProps> = ({ commentCount, likeCount }) =>
 
 
     return (
-        <div className={styles.reactionsBar}>
+        <div className={classNames(styles.reactionsBar, className)}>
             <div className={styles.reaction}>
                     <Like onClick={() => onLike()} className={classNames(styles.like, {
                         [styles.isLike]: isLike
                     })} />
                 <span>
                 {isLike ? likeCount + 1 : likeCount}
-            </span>
+                </span>
             </div>
             <div className={styles.reaction}>
                 <a

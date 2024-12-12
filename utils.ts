@@ -1,4 +1,4 @@
-import GitHubProvider from "next-auth/providers/github";
+
 
 const Monts:Record<string, string> = {
     "01" : "Января",
@@ -15,7 +15,7 @@ const Monts:Record<string, string> = {
 export const TranslateDate = (date: string):string => {
     const fullDay = date.slice(8, 10)
     const fullMonth = date.slice(5, 7)
-    let fullDate:string[] = []
+    const fullDate:string[] = []
     if (fullMonth[0] !== "0") {
         if (fullMonth === "10") {
             fullDate[1] = "Октября"
@@ -43,14 +43,7 @@ export const TranslateDate = (date: string):string => {
 }
 
 
-export const authOptions = {
-    providers: [
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID || "",
-            clientSecret: process.env.GITHUB_SECRET || "",
-        }),
-    ],
-}
+
 
 
 
