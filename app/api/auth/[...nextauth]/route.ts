@@ -1,6 +1,5 @@
 import NextAuth from "next-auth"
 import GitHubProvider from 'next-auth/providers/github';
-import { Session } from "next-auth"
 
 
 
@@ -11,16 +10,6 @@ const authOptions = {
             clientSecret: process.env.GITHUB_SECRET || "",
         }),
     ],
-    secret: process.env.NEXTAUTH_SECRET,
-    callbacks: {
-        async session({ 
-            session, 
-        }: { 
-            session: Session, 
-        }) {
-            return session;
-        },
-    },
 }
 
 
