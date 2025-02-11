@@ -6,10 +6,44 @@ import {ButonListOpen} from "@/shared/ButtonListOpen/ButonListOpen";
 import {TranslateDate} from "@/utils";
 
 export default async function Home() {
-    const data = await fetch("https://dev.to/api/articles/latest", { next: { revalidate: 100 } })
-    const latestPosts:Post[] = await data.json()
-    const postsData = await fetch("https://dev.to/api/articles", { cache: "force-cache" })
-    const posts: Post[] = await postsData.json()
+    let latestPosts: Post[] = [];
+    let posts: Post[] = [];
+
+    try {
+        const data = await fetch("https://dev.to/api/articles/latest", {
+            next: { revalidate: 100 },
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        if (!data.ok) {
+            throw new Error(`Ошибка при загрузке последних постов: ${data.status}`);
+        }
+        
+        latestPosts = await data.json();
+
+        const postsData = await fetch("https://dev.to/api/articles", {
+            cache: "force-cache",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        if (!postsData.ok) {
+            throw new Error(`Ошибка при загрузке всех постов: ${postsData.status}`);
+        }
+        
+        posts = await postsData.json();
+    } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+        return <div>Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.</div>;
+    }
+
+    if (!latestPosts.length || !posts.length) {
+        return <div>Данные не найдены</div>;
+    }
+
   return (
    <div className={styles.latest} >
        <H1 className={styles.mainpageH} >Недавние посты</H1>
