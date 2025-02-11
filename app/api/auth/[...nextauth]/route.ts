@@ -1,7 +1,6 @@
 import NextAuth from "next-auth"
 import GitHubProvider from 'next-auth/providers/github';
 import { Session } from "next-auth"
-import { JWT } from "next-auth/jwt"
 
 
 
@@ -16,12 +15,8 @@ const authOptions = {
     callbacks: {
         async session({ 
             session, 
-            token, 
-            user 
         }: { 
             session: Session, 
-            token: JWT, 
-            user: any 
         }) {
             return session;
         },
