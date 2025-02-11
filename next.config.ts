@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import svgrPlugin from "@svgr/webpack"
+
 
 const nextConfig: NextConfig = {
     webpack: (config, options) => {
@@ -43,12 +43,7 @@ const nextConfig: NextConfig = {
             }
             ]
     },
-    output: 'standalone',
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '2mb'
-    },
-  },
+    
 };
 
 export default nextConfig;
