@@ -42,7 +42,13 @@ const nextConfig: NextConfig = {
                 port: "",
             }
             ]
-    }
+    },
+    output: 'standalone',
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb'
+    },
+  },
 };
 
 export default nextConfig;
